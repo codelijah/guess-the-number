@@ -9,10 +9,21 @@ const displayScore = document.querySelector('.score');
 const displayHighScore = document.querySelector('.highscore');
 const againBtn = document.querySelector('.btn-again');
 const resetHighScore = document.querySelector('.reset-highscore');
+const toggleMusicBtn = document.querySelector('.toggle-music');
 
 const bgMusic = new Audio('sounds/background.mp3');
 bgMusic.loop = true;
 bgMusic.volume = 0.3;
+
+toggleMusicBtn.addEventListener('click', function () {
+  if (bgMusic.paused) {
+    bgMusic.play();
+    toggleMusicBtn.textContent = '🔇 Mute Music';
+  } else {
+    bgMusic.pause();
+    toggleMusicBtn.textContent = '🎵 Play Music';
+  }
+});
 
 let randomSecretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
@@ -81,3 +92,4 @@ againBtn.addEventListener('click', function () {
   bgMusic.currentTime = 0;
   bgMusic.play();
 });
+
