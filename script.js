@@ -1,12 +1,13 @@
 'use strict';
 
-const checkBtn = document.querySelector('.check');
+const checkBtn = document.querySelector('.btn-check');
 const guessInput = document.querySelector('.guess');
 const secretNumber = document.querySelector('.number');
+const secretNumberBox = document.querySelector('.number-box');
 const displayMessage = document.querySelector('.message');
 const displayScore = document.querySelector('.score');
 const displayHighScore = document.querySelector('.highscore');
-const againBtn = document.querySelector('.again');
+const againBtn = document.querySelector('.btn-again');
 const resetHighScore = document.querySelector('.reset-highscore');
 
 const bgMusic = new Audio('sounds/background.mp3');
@@ -34,8 +35,7 @@ checkBtn.addEventListener('click', function () {
     displayMessage.textContent = '🎯 Bullseye! You got it!';
     displayMessage.style.color = '#facc15';
     document.body.style.backgroundColor = '#22c55e';
-    secretNumber.style.width = '30rem';
-
+    secretNumberBox.style.width = '30rem';
     // 🎉 fire confetti
     confetti();
 
@@ -71,37 +71,13 @@ againBtn.addEventListener('click', function () {
   score = 20;
   randomSecretNumber = Math.trunc(Math.random() * 20) + 1;
   displayMessage.textContent = 'Start guessing...';
-  displayMessage.style.color = '#FFFFFF';
+  displayMessage.style.color = '#f5f5f5';
   displayScore.textContent = score;
   secretNumber.textContent = '?';
   guessInput.value = '';
   document.body.style.backgroundColor = '#222';
-  secretNumber.style.width = '15rem';
+  secretNumberBox.style.width = '15rem';
 
   bgMusic.currentTime = 0;
   bgMusic.play();
 });
-
-// else if (randomGuess > randomSecretNumber) {
-//     if (score > 1) {
-//       displayMessage.textContent = 'Overshot! Try a smaller number.';
-//       displayMessage.style.color = '#f97316';
-//       score--;
-//       displayScore.textContent = score;
-//     } else {
-//       displayMessage.textContent = '😢 Out of guesses! Try again?';
-//       displayScore.textContent = 0;
-//       document.body.style.backgroundColor = '#ef4444';
-//     }
-//   } else if (randomGuess < randomSecretNumber) {
-//     if (score > 1) {
-//       displayMessage.textContent = '📉 Too small! Guess higher.';
-//       displayMessage.style.color = '#f97316';
-//       score--;
-//       displayScore.textContent = score;
-//     } else {
-//       displayMessage.textContent = '😢 Out of guesses! Try again?';
-//       displayScore.textContent = 0;
-//       document.body.style.backgroundColor = '#ef4444';
-//     }
-//   }
