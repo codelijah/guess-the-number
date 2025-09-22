@@ -59,9 +59,15 @@
       <!-- Header -->
       <header class="header">
         <button class="btn btn-again">Again!</button>
-        <button class="btn toggle-music">🎵 Toggle Music</button>
+        <select id="musicSelect">
+          <option value="" disabled selected>🎵 Choose Sound</option>
+          <option value="sounds/background1.mp3">Background Music</option>
+          <option value="sounds/background2.mp3">Life goes hard</option>
+          <option value="sounds/background3.mp3">Ransom</option>
+        </select>
+        <button class="btn toggle-music">🎵</button>
       </header>
-      
+
       <!-- Main Game Area -->
       <main class="main-content">
         <!-- Title -->

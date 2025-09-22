@@ -33,7 +33,7 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Main Content */
+
 .main-content {
   flex: 1;
   display: flex;
@@ -52,7 +52,6 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* Number Display */
 .number-box {
   width: 15rem;
   height: 8rem;
@@ -177,6 +176,25 @@ body {
 
 .highscore {
   color: #f5f5f5;
+}
+
+#musicSelect {
+  background: #1e1e2f; 
+  color: #fff;
+  border: 2px solid #4cafef;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* Options dropdown */
+#musicSelect option {
+  background: #1e1e2f;
+  color: #fff;
 }
 
 @media (max-width: 768px) {

@@ -10,18 +10,43 @@ const displayHighScore = document.querySelector('.highscore');
 const againBtn = document.querySelector('.btn-again');
 const resetHighScore = document.querySelector('.reset-highscore');
 const toggleMusicBtn = document.querySelector('.toggle-music');
+const musicSelect = document.getElementById('musicSelect');
 
-const bgMusic = new Audio('sounds/background.mp3');
+let bgMusic = new Audio(musicSelect.value);
 bgMusic.loop = true;
 bgMusic.volume = 0.3;
 
+let isPlaying = false;
+
+function playMusic() {
+  bgMusic.play();
+  isPlaying = true;
+  toggleMusicBtn.textContent = '🔇';
+}
+
+function pauseMusic() {
+  bgMusic.pause();
+  isPlaying = false;
+  toggleMusicBtn.textContent = '🎵';
+}
+
 toggleMusicBtn.addEventListener('click', function () {
-  if (bgMusic.paused) {
-    bgMusic.play();
-    toggleMusicBtn.textContent = '🔇 Mute Music';
+  if (isPlaying) {
+    pauseMusic();
   } else {
-    bgMusic.pause();
-    toggleMusicBtn.textContent = '🎵 Play Music';
+    playMusic();
+  }
+});
+
+// Handle changing tracks
+musicSelect.addEventListener('change', function () {
+  bgMusic.pause();
+  bgMusic = new Audio(musicSelect.value);
+  bgMusic.loop = true;
+  bgMusic.volume = 0.3;
+
+  if (isPlaying) {
+    bgMusic.paused();
   }
 });
 
@@ -33,9 +58,6 @@ highScore = Number(localStorage.getItem('highScore')) || 0;
 displayHighScore.textContent = highScore;
 
 checkBtn.addEventListener('click', function () {
-  if (bgMusic.paused) {
-    bgMusic.play();
-  }
   const randomGuess = Number(guessInput.value);
 
   if (!randomGuess) {
@@ -88,8 +110,4 @@ againBtn.addEventListener('click', function () {
   guessInput.value = '';
   document.body.style.backgroundColor = '#222';
   secretNumberBox.style.width = '15rem';
-
-  bgMusic.currentTime = 0;
-  bgMusic.play();
 });
-
